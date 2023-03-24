@@ -1,6 +1,6 @@
 # pypryvacy
 
-PyPryvacy is a differential privacy extension for Pandas. Use it simply by importing the module and instantiating a mechanism.
+PyPryvacy is a differential privacy extension for Pandas. Use it simply by importing the module and instantiating a mechanism. Use the `.private` accessor on any Dataframe or Series to access differentially private versions of algorithms, or obtain noise directly.
 
 ```python
 import numpy as np
