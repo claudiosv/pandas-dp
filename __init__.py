@@ -18,20 +18,20 @@ class Mechanism:
 class GaussianMechanism(Mechanism):
     def __init__(self, epsilon=1 / 2, delta=None):
         super().__init__(epsilon)
-        if delta:
-            self.delta = delta
-        else:
-            self.delta = 1 - np.exp(-self.epsilon)
-        # delta = 1/(2*n) or 1 - exp(-epsilon)
+        self.delta = delta
 
     def noise(self, shape=None, sensitivity=1):
-        return np.random.normal(0, self.normal_variance(sensitivity), size=shape)
+        return np.random.normal(0, self.normal_variance(sensitivity, shape), size=shape)
 
-    def normal_variance(self, sensitivity):
+    def normal_variance(self, sensitivity, shape):
         """
         N (0, 2 ln(1.25/δ)∆_2^2/ε^2)
         """
-        return (2 * np.log(1.25 / self.delta) * (sensitivity**2)) / (
+        if self.delta:
+            delta = self.delta
+        else:
+            delta = 1/shape[0]
+        return (2 * np.log(1.25 / delta) * (sensitivity**2)) / (
             self.epsilon**2
         )
     # mean: sensitivity is sqrt(d)/n

@@ -1,13 +1,13 @@
-# pypryvacy
+# pandas-dp
 
-PyPryvacy is a differential privacy extension for Pandas. Use it simply by importing the module and instantiating a mechanism. Use the `.private` accessor on any Dataframe or Series to access differentially private versions of algorithms, or obtain noise directly.
+pandas-dp is a differential privacy extension for Pandas. Use it simply by importing the module and instantiating a mechanism. Use the `.private` accessor on any Dataframe or Series to access differentially private versions of algorithms, or obtain noise directly.
 
 ```python
 import numpy as np
 import pandas as pd
 
-# PyPryvacy
-import pyprivacy as pr
+# pandas-dp
+import pandas_dp as pr
 
 df = pd.DataFrame({"longitude": np.linspace(0, 10, num=5), "latitude": np.linspace(0, 20, num=5)})
 
